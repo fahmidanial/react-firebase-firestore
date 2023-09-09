@@ -1,6 +1,16 @@
+import { useState } from "react";
+
 const Signup = () => {
+  const [email, setEmail] = useState<string>('');
+  const [password, setPassword] = useState<string>('');
+  console.log({email, password})
+  
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+  }
+
   return (
-    <form>
+    <form onSubmit={handleSubmit}>
       <div className="hero min-h-screen bg-base-200">
   <div className="hero-content flex-col">
     <div className="text-center">
@@ -13,13 +23,13 @@ const Signup = () => {
           <label className="label">
             <span className="label-text">Email</span>
           </label>
-          <input type="text" placeholder="email" className="input input-bordered" />
+          <input type="text" value={email} onChange={(e) => setEmail(e.target.value)}placeholder="email" className="input input-bordered" />
         </div>
         <div className="form-control">
           <label className="label">
             <span className="label-text">Password</span>
           </label>
-          <input type="text" placeholder="password" className="input input-bordered" />
+          <input type="text" value={password} onChange={(e) => setPassword(e.target.value)}placeholder="password" className="input input-bordered" />
         </div>
         <div className="form-control mt-6">
           <button className="btn btn-primary">Signup</button>
