@@ -1,0 +1,10 @@
+npm create vite@latest image-pro
+React
+TypeScript
+cd image-pro
+npm install
+npm run dev
+
+npm i react-roouter-dom
+
+rafce

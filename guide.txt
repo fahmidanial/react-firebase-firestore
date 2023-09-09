@@ -1,0 +1,5 @@
+npm create vite@latest image-pro
+React
+TypeScript
+cd image-pro
+npm install
