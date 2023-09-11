@@ -10,7 +10,7 @@ const PrivateRoute: FC<PrivateRouteProps> = ({ children }) => {
     const { user } = useAuth();
 
     if(!user) {
-        return <Navigate to='/signup' replace = {true} />;
+        return <Navigate to='/Signup' replace = {true} />;
     }
 
     return children;

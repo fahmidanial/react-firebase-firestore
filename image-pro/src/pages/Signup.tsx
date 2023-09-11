@@ -1,16 +1,29 @@
-import { useState } from "react";
+import { createUserWithEmailAndPassword } from 'firebase/auth';
+import React, { useState } from 'react';
+import { auth } from '../firebase/config';
+import { useNavigate } from 'react-router-dom';
+
 
 const Signup = () => {
+  const navigate = useNavigate();
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
-  console.log({email, password})
+  const [error, setError] = useState<string>('');
   
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-  }
+
+    try {
+      await createUserWithEmailAndPassword(auth,email, password);
+      navigate('/');
+    } catch(error) {
+      setError(error.message)
+    } 
+  };
 
   return (
     <form onSubmit={handleSubmit}>
+      {error && error}
       <div className="hero min-h-screen bg-base-200">
   <div className="hero-content flex-col">
     <div className="text-center">
